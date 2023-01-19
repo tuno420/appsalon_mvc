@@ -1,5 +1,5 @@
 <?php
-
+//ayo
 namespace MVC;
 
 class Router
@@ -16,14 +16,20 @@ class Router
     }
 
     public function comprobarRutas() {
-        $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
+        initSes();
+        $currentUrl = ($_SERVER['REQUEST_URI'] === '') ? '/' :  $_SERVER['REQUEST_URI'] ;
         $method = $_SERVER['REQUEST_METHOD'];
 
+        // Dividir la URL actual cada vez que exista un '?' para indicar que se están pasando variables por la URL
+        $splitURL = explode('?', $currentUrl);
+        //debuguear($currentUrl);
+
         if ($method === 'GET') {
-            $fn = $this->getRoutes[$currentUrl] ?? null;
+            $fn = $this->getRoutes[$splitURL[0]] ?? null; //$splitURL[0] contiene la URL sin variables
         } else {
-            $fn = $this->postRoutes[$currentUrl] ?? null;
+            $fn = $this->postRoutes[$splitURL[0]] ?? null;
         }
+
 
         if ( $fn ) {
             // Call user fn va a llamar una función cuando no sabemos cual sera
@@ -33,7 +39,9 @@ class Router
         }
     }
 
-    public function render($view, $datos = []) {
+    public function render($view, $datos = [])
+    {
+
         // Leer lo que le pasamos  a la vista
         foreach ($datos as $key => $value) {
             $$key = $value;  // Doble signo de dolar significa: variable variable, básicamente nuestra variable sigue siendo la original, pero al asignarla a otra no la reescribe, mantiene su valor, de esta forma el nombre de la variable se asigna dinamicamente
