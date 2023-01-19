@@ -1,1 +1,1 @@
-function iniciarApp(){buscarPorFecha()}document.addEventListener("DOMContentLoaded",(function(){iniciarApp()}));
+document.addEventListener("DOMContentLoaded",(function(){iniciarApp()}));
