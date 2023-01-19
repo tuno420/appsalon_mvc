@@ -2,6 +2,7 @@
 
 $db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'] ?? '', $_ENV['DB_NAME']);
 mysqli_set_charset($db, 'utf8mb4');
+$db->set_charset("utf8");
 
 
 if (!$db) {
