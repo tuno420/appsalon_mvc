@@ -1,0 +1,1 @@
+function iniciarApp(){buscarPorFecha()}document.addEventListener("DOMContentLoaded",(function(){iniciarApp()}));
