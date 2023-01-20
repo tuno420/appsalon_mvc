@@ -14,7 +14,7 @@ class Router
     public function post($url, $fn) {
         $this->postRoutes[$url] = $fn;
     }
-/*
+
     public function comprobarRutas() {
         initSes();
         $currentUrl = ($_SERVER['REQUEST_URI'] === '') ? '/' :  $_SERVER['REQUEST_URI'] ;
@@ -38,8 +38,8 @@ class Router
             echo "Página No Encontrada o Ruta no válida";
         }
     }
-    */
-    public function comprobarRutas() {
+    
+    /* public function comprobarRutas() {
         initSes();
         $currentUrl = ($_SERVER['REQUEST_URI'] === '') ? '/' :  $_SERVER['REQUEST_URI'] ;
         $method = $_SERVER['REQUEST_METHOD'];
@@ -73,4 +73,5 @@ class Router
         $contenido = ob_get_clean(); // Limpia el Buffer
         include_once __DIR__ . '/views/layout.php';
     }
+    */
 }
